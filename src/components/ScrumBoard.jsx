@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { db, ref } from '../utils/firebaseConfig';
-import { onValue, set, update, remove, push } from "firebase/database";
+import { onValue, update, remove, push } from "firebase/database";
 
 const ScrumBoard = () => {
     const [tasks, setTasks] = useState({});
-    const [newTaskDescription, setNewTaskDescription] = useState('');
-    const [newTaskDepartment, setNewTaskDepartment] = useState('UX');
+    const [newTaskDesc, setNewTaskDesc] = useState('');
+    const [newTaskCategory, setNewTaskCategory] = useState('UX');
 
     useEffect(() => {
-        const tasksRef = ref(db, 'tasks');
+        const tasksRef = ref(db, 'assignment');
         const unsubscribe = onValue(tasksRef, (snapshot) => {
             const data = snapshot.val();
             setTasks(data || {});
@@ -19,27 +19,27 @@ const ScrumBoard = () => {
     }, []);
 
     const handleAddTask = () => {
-        if (newTaskDescription.trim() === '') {
+        if (newTaskDesc.trim() === '') {
             alert('Task description cannot be empty.');
             return;
         }
-        const newTaskKey = push(ref(db, 'tasks')).key;
+        const newTaskKey = push(ref(db, 'assignment')).key;
         const updates = {};
-        updates[`/tasks/${newTaskKey}`] = {
-            description: newTaskDescription,
-            column: 'to-do',
-            department: newTaskDepartment
+        updates[`/assignment/${newTaskKey}`] = {
+            department: newTaskCategory,
+            description: newTaskDesc,
+            column: 'to-do'
         };
         update(ref(db), updates);
-        setNewTaskDescription('');
+        setNewTaskDesc('');
     };
 
     const updateTask = (taskId, updates) => {
-        update(ref(db, `tasks/${taskId}`), updates);
+        update(ref(db, `assignment/${taskId}`), updates);
     };
 
     const delTask = (taskId) => {
-        remove(ref(db, `tasks/${taskId}`));
+        remove(ref(db, `assignment/${taskId}`));
     };
 
     return (
@@ -49,18 +49,18 @@ const ScrumBoard = () => {
                 <input
                     type="text"
                     placeholder="Enter task description"
-                    value={newTaskDescription}
-                    onChange={(e) => setNewTaskDescription(e.target.value)}
+                    value={newTaskDesc}
+                    onChange={(e) => setNewTaskDesc(e.target.value)}
                 />
                 <select
-                    value={newTaskDepartment}
-                    onChange={(e) => setNewTaskDepartment(e.target.value)}
+                    value={newTaskCategory}
+                    onChange={(e) => setNewTaskCategory(e.target.value)}
                 >
                     <option value="UX">UX</option>
                     <option value="Dev Backend">Dev Backend</option>
                     <option value="Dev Frontend">Dev Frontend</option>
                 </select>
-                <button onClick={handleAddTask}>Add Task</button>
+                <button onClick={handleAddTask}>Add</button>
             </div>
             <div className="columns">
                 <div className="column to-do">
@@ -68,10 +68,10 @@ const ScrumBoard = () => {
                     {Object.entries(tasks)
                         .filter(([id, task]) => task.column === 'to-do')
                         .map(([id, task]) => (
-                            <div key={id} className="task">
+                            <div key={id} className="assignment">
                                 <p>{task.description}</p>
                                 <small>Department: {task.department}</small>
-                                <button onClick={() => updateTask(id, { column: 'in-progress' })}>Start</button>
+                                <button onClick={() => updateTask(id, { column: 'in-progress' })}>Assign >></button>
                             </div>
                         ))}
                 </div>
@@ -81,10 +81,10 @@ const ScrumBoard = () => {
                     {Object.entries(tasks)
                         .filter(([id, task]) => task.column === 'in-progress')
                         .map(([id, task]) => (
-                            <div key={id} className="task">
+                            <div key={id} className="assignment">
                                 <p>{task.description}</p>
                                 <small>Department: {task.department}</small>
-                                <button onClick={() => updateTask(id, { column: 'done' })}>Done</button>
+                                <button onClick={() => updateTask(id, { column: 'done' })}>Done >></button>
                             </div>
                         ))}
                 </div>
