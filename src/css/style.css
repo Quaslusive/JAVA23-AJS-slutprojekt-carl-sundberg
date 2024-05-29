@@ -1,26 +1,43 @@
 :root {
-    --primary-color: rgb(144, 0, 157);
-    --secondary-color: rgb(84, 73, 73);
-    --bg-color: rgb(215, 150, 183);
-    --text: rgb(23, 118, 213);
-    --custom-property: initial;
-    --redius: 3%;
+    --bg-1-color: rgb(48, 48, 48);
+    --bg-2-color: rgb(78, 5, 55);
+
+    --app-1-color: rgba(94, 73, 97, 0.68);
+    --app-2-color: rgb(94, 27, 43);
+
+    --columns-1-color: rgb(248, 246, 248);
+    --columns-2-color: rgb(140, 8, 152);
+
+    --task-1-color: rgb(186, 203, 237);
+
+    --text: rgb(255, 255, 255);
+    --bg-redius: 10%;
+    --redius: 5%;
     --blur:10px;
+
 }
 * {
-    color: var(--text);
-    background-image: var(--bg-color) ;
 
 }
+body {
+    background-image: linear-gradient(90deg, var(--bg-1-color), var(--bg-2-color ));
 
+}
 .App {
     text-align: center;
+    background: var(--app-1-color) ;
+    border-radius: var(--bg-redius);
+    padding: 12px;
+    margin: 23px;
+    border: 12px double, var(--app-2-color);
+    color: var(--text);
+
 
 
 }
 h2:hover{
-    text-shadow: #000000;
-    color: chartreuse;
+    text-shadow: #da1c1c;
+    color: #ffffff;
 
 }
 
@@ -29,6 +46,8 @@ h2:hover{
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    border: 12px double, var(--app-2-color);
+    color: var(--text);
 }
 
 .add-task-form {
@@ -37,27 +56,32 @@ h2:hover{
 
 .add-task-form input, .add-task-form select, .add-task-form button {
     margin-right: 10px;
+    border-color: var(--app-2-color);
 }
 
 .columns {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    border-radius: var(--redius);
+    border-radius: var(--redius), var(--app-2-color);
+
 }
 
 .column {
-    border: 3px solid var(--primary-color);
+    border: 3px solid var(--app-2-color);
     padding: 10px;
     width: 30%;
     border-radius: var(--redius);
+    border-color: var(--columns-1-color);
 }
 
-.task {
-    border: 3px solid var(--secondary-color);
+.assignment {
+    border: 3px solid var(--task-1-color);
     margin: 10px 0;
     padding: 10px;
     border-radius: var(--redius);
+    border-color: var(--task-1-color);
+
 }
 
 button {
