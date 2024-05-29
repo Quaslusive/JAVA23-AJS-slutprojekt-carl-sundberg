@@ -11,8 +11,7 @@
     --task-1-color: rgb(186, 203, 237);
 
     --text: rgb(255, 255, 255);
-    --bg-redius: 10%;
-    --redius: 10px;
+    --main-redius: 10px;
     --blur:10px;
 
 }
@@ -64,14 +63,14 @@ h2:hover{
     display: flex;
     justify-content: space-around;
     width: 100%;
-    border-radius: var(--redius), var(--app-2-color);
+    border-radius: var(--main-redius), var(--app-2-color);
 
 }
 
 .column {
     border: 3px solid var(--app-2-color);
     width: 30%;
-    border-radius: var(--redius);
+    border-radius: var(--main-redius);
     border-color: var(--columns-1-color);
 
   padding-bottom: 20px;
@@ -82,7 +81,7 @@ h2:hover{
     border: 3px solid var(--task-1-color);
     margin: 10px 0;
     padding: 10px;
-    border-radius: var(--redius);
+    border-radius: var(--main-redius);
     border-color: var(--task-1-color);
 
 }
