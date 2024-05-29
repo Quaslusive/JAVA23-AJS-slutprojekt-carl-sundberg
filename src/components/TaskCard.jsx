@@ -8,7 +8,7 @@ function TaskCard  ({ id, task, updateTask, deleteTask })  {
             <p>Department: {task.department}</p>
             {task.column !== 'done' ? (
                 <button onClick={() => updateTask(id, { column: task.column === 'to-do' ? 'in-progress' : 'done' })}>
-                    {task.column === 'to-do' ? 'Assign >>' : 'Done >>'}
+                    {task.column === 'to-do' ? 'Assign' : 'Done'}
                 </button>
             ) : (
                 <button onClick={() => deleteTask(id)}>Remove</button>
