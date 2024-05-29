@@ -3,7 +3,7 @@ import TaskCard from './TaskCard';
 
 function Column ({ title, tasks, updateTask, deleteTask })  {
     return (
-        <div className={`column ${title.toLowerCase()}`}>
+        <div className="column">
             <h2>{title}</h2>
             {tasks.map(([id, task]) => (
                 <TaskCard

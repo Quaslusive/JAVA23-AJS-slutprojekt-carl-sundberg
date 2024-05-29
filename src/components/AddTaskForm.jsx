@@ -8,7 +8,7 @@ function AddTaskForm  () {
 
     const handleAddTask = () => {
         if (newTaskDesc.trim() === '') {
-            alert('TaskCard description cannot be empty.');
+            alert('Description cannot be empty.');
             return;
         }
         const newTaskKey = push(ref(db, 'assignment')).key;

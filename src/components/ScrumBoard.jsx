@@ -4,7 +4,7 @@ import { onValue, update, remove } from "firebase/database";
 import AddTaskForm from './AddTaskForm';
 import Column from './Column';
 
-const ScrumBoard = () => {
+function ScrumBoard () {
     const [tasks, setTasks] = useState({});
 
     useEffect(() => {
@@ -51,6 +51,6 @@ const ScrumBoard = () => {
             </div>
         </div>
     );
-};
+}
 
 export default ScrumBoard;

@@ -1,10 +1,6 @@
-import React, {useEffect} from 'react';
-import {db, ref} from "../utils/firebaseConfig";
-import {onValue, remove, update} from "firebase/database";
-
+import React from 'react';
 
 function TaskCard  ({ id, task, updateTask, deleteTask })  {
-
 
     return (
         <div className="assignment">
