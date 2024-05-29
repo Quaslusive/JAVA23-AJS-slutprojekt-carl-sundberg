@@ -12,7 +12,7 @@
 
     --text: rgb(255, 255, 255);
     --bg-redius: 10%;
-    --redius: 5%;
+    --redius: 10px;
     --blur:10px;
 
 }
@@ -31,6 +31,7 @@ body {
     margin: 23px;
     border: 12px double, var(--app-2-color);
     color: var(--text);
+    padding-bottom: 123px;
 
 
 
@@ -69,10 +70,12 @@ h2:hover{
 
 .column {
     border: 3px solid var(--app-2-color);
-    padding: 10px;
     width: 30%;
     border-radius: var(--redius);
     border-color: var(--columns-1-color);
+
+  padding-bottom: 20px;
+
 }
 
 .assignment {
@@ -87,3 +90,4 @@ h2:hover{
 button {
     margin-top: 10px;
 }
+
