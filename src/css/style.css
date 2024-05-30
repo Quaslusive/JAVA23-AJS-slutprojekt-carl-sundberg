@@ -1,43 +1,35 @@
 :root {
-    --bg-1-color: rgb(48, 48, 48);
+    --bg-1-color: rgb(59, 40, 62);
     --bg-2-color: rgb(78, 5, 55);
 
-    --app-1-color: rgba(94, 73, 97, 0.68);
-    --app-2-color: rgb(94, 27, 43);
+    --app-1-color: rgb(94, 73, 97, 0.68);
+    --app-2-color: rgb(196, 2, 209);
 
-    --columns-1-color: rgb(248, 246, 248);
+    --columns-1-color: rgb(94, 73, 97, 0.68);
     --columns-2-color: rgb(140, 8, 152);
 
-    --task-1-color: rgb(186, 203, 237);
+    --task-1-color: rgb(225, 159, 194);
+    --task-2-color: rgba(69, 4, 74, 0.28);
 
-    --text: rgb(255, 255, 255);
-    --main-redius: 10px;
-    --blur:10px;
+    --text: rgb(225, 159, 194);
+    --html-redius: 10px;
 
 }
 * {
-
+    font-family: "Georgia", emoji;
+    border-radius: var(--html-redius);
 }
 body {
-    background-image: linear-gradient(90deg, var(--bg-1-color), var(--bg-2-color ));
+    background-image: linear-gradient(90deg, var(--bg-1-color, #3b1840), var(--bg-2-color ));
 
 }
 .App {
     text-align: center;
     background: var(--app-1-color) ;
-    border-radius: var(--bg-redius);
-    padding: 12px;
-    margin: 23px;
-    border: 12px double, var(--app-2-color);
     color: var(--text);
-    padding-bottom: 123px;
-
-
-
-}
-h2:hover{
-    text-shadow: #da1c1c;
-    color: #ffffff;
+    border: 14px ridge var(--app-1-color);
+    margin: 23px;
+    padding: 10px 10px 100px;
 
 }
 
@@ -46,47 +38,39 @@ h2:hover{
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    border: 12px double, var(--app-2-color);
-    color: var(--text);
+
 }
 
 .add-task-form {
     margin-bottom: 20px;
+    border: 10px inset var(--app-1-color);
 }
 
 .add-task-form input, .add-task-form select, .add-task-form button {
-    margin-right: 10px;
+    margin: 10px;
+    padding: 5px;
     border-color: var(--app-2-color);
+
 }
 
 .columns {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    border-radius: var(--main-redius), var(--app-2-color);
 
 }
 
 .column {
-    border: 3px solid var(--app-2-color);
+    border: 10px inset var(--columns-1-color);
     width: 30%;
-    border-radius: var(--main-redius);
-    border-color: var(--columns-1-color);
-
-  padding-bottom: 20px;
+    padding-bottom: 20px;
 
 }
 
 .assignment {
-    border: 3px solid var(--task-1-color);
+    border: 4px ridge var(--task-1-color);
+    background: var(--task-2-color);
     margin: 10px 0;
     padding: 10px;
-    border-radius: var(--main-redius);
-    border-color: var(--task-1-color);
 
 }
-
-button {
-    margin-top: 10px;
-}
-

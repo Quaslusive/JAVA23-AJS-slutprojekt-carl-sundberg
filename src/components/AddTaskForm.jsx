@@ -38,7 +38,7 @@ function AddTaskForm  () {
                 <option value="Dev Backend">Dev Backend</option>
                 <option value="Dev Frontend">Dev Frontend</option>
             </select>
-            <button onClick={handleAddTask}>Add Task</button>
+            <button onClick={handleAddTask}>Add Assignment</button>
         </div>
     );
 }
