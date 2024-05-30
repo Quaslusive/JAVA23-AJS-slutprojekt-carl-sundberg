@@ -6,7 +6,7 @@ function AddTaskForm  () {
     const [newTask, setNewTask] = useState('');
     const [newCategory, setNewCategory] = useState('UX');
 
-    const handleAddTask = () => {
+    function handleAddTask () {
         if (newTask.trim() === '') {
             alert('Beskrivningen kan inte vara tom');
             return;
