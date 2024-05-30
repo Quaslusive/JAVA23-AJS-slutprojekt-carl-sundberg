@@ -18,13 +18,13 @@ function ScrumBoard () {
         return () => listener();
     }, []);
 
-    const updateTask = (taskId, updates) => {
+    function updateTask  (taskId, updates)  {
         update(ref(db, `assignments/${taskId}`), updates);
-    };
+    }
 
-    const deleteTask = (taskId) => {
+    function deleteTask (taskId)  {
         remove(ref(db, `assignments/${taskId}`));
-    };
+    }
 
     return (
         <div className="scrum-board">

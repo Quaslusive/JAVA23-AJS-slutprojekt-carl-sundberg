@@ -11,7 +11,6 @@ function TaskCard  ({ id, task, updateTask, deleteTask })  {
     }
 
     return (
-
         <div className="task">
             <h4>Assignment:</h4> <h1>{task.assignment}</h1>
             <p>Category: {task.category}</p>
