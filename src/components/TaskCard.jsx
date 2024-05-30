@@ -12,7 +12,7 @@ function TaskCard  ({ id, task, updateTask, deleteTask })  {
 
     return (
 
-        <div className="assignment">
+        <div className="task">
             <p>{task.description}</p>
             <small>Department: {task.category}</small>
             {task.assignedUser && <p>Assigned to: {task.assignedUser}</p>}
@@ -31,7 +31,7 @@ function TaskCard  ({ id, task, updateTask, deleteTask })  {
                 <button onClick={() => updateTask(id, { column: 'done' })}>Done >></button>
             )}
             {task.column === 'done' && (
-                <button onClick={() => deleteTask(id)}>Remove</button>
+                <button onClick={() => deleteTask(id)}>Remove X</button>
             )}
         </div>
     );

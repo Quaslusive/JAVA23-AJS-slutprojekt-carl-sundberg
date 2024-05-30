@@ -9,10 +9,10 @@
     --columns-2-color: rgb(140, 8, 152);
 
     --task-1-color: rgb(225, 159, 194);
-    --task-2-color: rgba(69, 4, 74, 0.28);
+    --task-2-color: rgb(69, 4, 74, 0.28);
 
-    --text: rgb(225, 159, 194);
-    --html-redius: 10px;
+    --text: rgb(255, 195, 205);
+    --html-redius: 20px;
 
 }
 * {
@@ -50,12 +50,12 @@ body {
     margin: 10px;
     padding: 5px;
     border-color: var(--app-2-color);
+    background: var(--task-1-color);
 
 }
 
 .columns {
     display: flex;
-    justify-content: space-around;
     width: 100%;
 
 }
@@ -67,10 +67,44 @@ body {
 
 }
 
-.assignment {
-    border: 4px ridge var(--task-1-color);
+.task {
+    border: 4px inset var(--task-1-color);
     background: var(--task-2-color);
-    margin: 10px 0;
+    margin: 10px 5%;
     padding: 10px;
+    transition: background-color 0.3s;
 
 }
+.task:hover {
+
+    background-color: rgb(204, 29, 220, 0.38);
+}
+
+ .task input {
+    text-align: center;
+    padding-bottom: 10px;
+    margin: 5px;
+    background: var(--task-1-color);
+}
+.task button {
+    justify-content: center;
+    margin-top: 10px;
+    padding: 5px;
+    width: 100px;
+    background: var(--task-1-color);
+
+
+}
+
+button, select, input {
+
+    transition: background-color 0.3s;
+}
+
+button:hover, select:hover, input:hover {
+    background-color: white;
+    color: black;
+
+}
+
+
