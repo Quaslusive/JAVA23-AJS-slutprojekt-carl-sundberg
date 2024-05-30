@@ -8,22 +8,22 @@ function ScrumBoard () {
     const [tasks, setTasks] = useState({});
 
     useEffect(() => {
-        const tasksRef = ref(db, 'assignment');
-        const unsubscribe = onValue(tasksRef, (snapshot) => {
+        const tasksRef = ref(db, 'assignments');
+        const listener = onValue(tasksRef, (snapshot) => {
             const data = snapshot.val();
             setTasks(data || {});
         });
 
-        // Cleanup subscription on unmount
-        return () => unsubscribe();
+
+        return () => listener();
     }, []);
 
     const updateTask = (taskId, updates) => {
-        update(ref(db, `assignment/${taskId}`), updates);
+        update(ref(db, `assignments/${taskId}`), updates);
     };
 
     const deleteTask = (taskId) => {
-        remove(ref(db, `assignment/${taskId}`));
+        remove(ref(db, `assignments/${taskId}`));
     };
 
     return (
@@ -32,19 +32,19 @@ function ScrumBoard () {
             <div className="columns">
                 <Column
                     title="To Do"
-                    tasks={Object.entries(tasks).filter(([id, task]) => task.column === 'to-do')}
+                    tasks={Object.entries(tasks).filter(([id, task]) => task.status === 'to-do')}
                     updateTask={updateTask}
                     deleteTask={deleteTask}
                 />
                 <Column
                     title="In Progress"
-                    tasks={Object.entries(tasks).filter(([id, task]) => task.column === 'in-progress')}
+                    tasks={Object.entries(tasks).filter(([id, task]) => task.status === 'in-progress')}
                     updateTask={updateTask}
                     deleteTask={deleteTask}
                 />
                 <Column
                     title="Done"
-                    tasks={Object.entries(tasks).filter(([id, task]) => task.column === 'done')}
+                    tasks={Object.entries(tasks).filter(([id, task]) => task.status === 'done')}
                     updateTask={updateTask}
                     deleteTask={deleteTask}
                 />

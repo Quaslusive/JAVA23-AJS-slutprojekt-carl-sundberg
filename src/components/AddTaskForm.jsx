@@ -3,40 +3,41 @@ import { db, ref } from '../utils/firebaseConfig';
 import { push, update } from "firebase/database";
 
 function AddTaskForm  () {
-    const [newTaskDesc, setNewTaskDesc] = useState('');
-    const [newTaskCategory, setNewTaskCategory] = useState('UX');
+    const [newTask, setNewTask] = useState('');
+    const [newCategory, setNewCategory] = useState('UX');
 
     const handleAddTask = () => {
-        if (newTaskDesc.trim() === '') {
-            alert('Beskrivningen kan inte vara tom.');
+        if (newTask.trim() === '') {
+            alert('Beskrivningen kan inte vara tom');
             return;
         }
-        const newTaskKey = push(ref(db, 'assignment')).key;
+        const newTaskKey = push(ref(db, 'assignments')).key;
         const updates = {};
-        updates[`/assignment/${newTaskKey}`] = {
-            category: newTaskCategory,
-            description: newTaskDesc,
-            column: 'to-do'
+        updates[`/assignments/${newTaskKey}`] = {
+            assignment: newTask,
+            category: newCategory,
+            status: 'to-do',
         };
         update(ref(db), updates);
-        setNewTaskDesc('');
+        setNewTask('');
+        console.log(ref(db) );
     };
 
     return (
         <div className="add-task-form">
             <input
                 type="text"
-                placeholder="Enter task description"
-                value={newTaskDesc}
-                onChange={(e) => setNewTaskDesc(e.target.value)}
+                placeholder="Enter Assignment"
+                value={newTask}
+                onChange={(e) => setNewTask(e.target.value)}
             />
             <select
-                value={newTaskCategory}
-                onChange={(e) => setNewTaskCategory(e.target.value)}
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}
             >
-                <option value="UX">UX</option>
-                <option value="Dev Backend">Dev Backend</option>
-                <option value="Dev Frontend">Dev Frontend</option>
+                <option className='ux' value="UX">UX</option>
+                <option className='Backend' value="Dev Backend">Dev Backend</option>
+                <option className='Frontend' value="Dev Frontend">Dev Frontend</option>
             </select>
             <button onClick={handleAddTask}>Add Assignment</button>
         </div>
