@@ -8,13 +8,13 @@ function AddTaskForm  () {
 
     const handleAddTask = () => {
         if (newTaskDesc.trim() === '') {
-            alert('Description cannot be empty.');
+            alert('Beskrivningen kan inte vara tom.');
             return;
         }
         const newTaskKey = push(ref(db, 'assignment')).key;
         const updates = {};
         updates[`/assignment/${newTaskKey}`] = {
-            department: newTaskCategory,
+            category: newTaskCategory,
             description: newTaskDesc,
             column: 'to-do'
         };
