@@ -18,6 +18,8 @@ function ScrumBoard () {
         return () => listener();
     }, []);
 
+
+
     function updateTask  (taskId, updates)  {
         update(ref(db, `assignments/${taskId}`), updates);
     }

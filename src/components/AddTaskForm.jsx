@@ -6,7 +6,7 @@ function AddTaskForm  () {
     const [newTask, setNewTask] = useState('');
     const [newCategory, setNewCategory] = useState('UX');
 
-    function handleAddTask () {
+    function handleAddTask (event) {
         if (newTask.trim() === '') {
             alert('Beskrivningen kan inte vara tom');
             return;
@@ -23,23 +23,33 @@ function AddTaskForm  () {
         console.log(ref(db) );
     }
 
+
+    function handlerKeyPress(event) {
+        if (event.key === 'Enter'){
+            event.preventDefault();
+            handleAddTask();
+        }
+    }
+
     return (
         <div className="add-task-form">
             <input
                 type="text"
                 placeholder="Enter Assignment"
                 value={newTask}
-                onChange={(e) => setNewTask(e.target.value)}
+                onChange={(event) => setNewTask(event.target.value)}
+                onKeyPress={handlerKeyPress}
             />
             <select
                 value={newCategory}
-                onChange={(e) => setNewCategory(e.target.value)}
+                onChange={(event) => setNewCategory(event.target.value)}
+                onKeyPress={handlerKeyPress}
             >
                 <option className='ux' value="UX">UX</option>
                 <option className='Backend' value="Dev Backend">Dev Backend</option>
                 <option className='Frontend' value="Dev Frontend">Dev Frontend</option>
             </select>
-            <button onClick={handleAddTask}>Add Assignment</button>
+            <button onClick={handleAddTask} onKeyPress={handlerKeyPress}>Add Assignment</button>
         </div>
     );
 }
