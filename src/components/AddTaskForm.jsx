@@ -7,9 +7,9 @@ function AddTaskForm  () {
     const [newCategory, setNewCategory] = useState('UX');
 
     function handleAddTask (event) {
-        event.preventDefault();
         if (newTask.trim() === '') {
             alert('Beskrivningen kan inte vara tom');
+        event.preventDefault();
             return;
         }
         const newTaskKey = push(ref(db, 'assignments')).key;
