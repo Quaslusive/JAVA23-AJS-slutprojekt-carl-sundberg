@@ -23,13 +23,15 @@ function AddTaskForm  () {
         console.log(ref(db) );
     }
 
-
+/*
     function handlerKeyPress(event) {
         if (event.key === 'Enter'){
             event.preventDefault();
             handleAddTask();
         }
     }
+
+ */
 
     return (
         <form className="add-task-form" onSubmit={handleAddTask}>
