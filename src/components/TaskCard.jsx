@@ -18,10 +18,8 @@ function TaskCard  ({ id, task, updateTask, deleteTask })  {
             {task.status === 'to-do' && (
                 <div>
                     <input
-                        type="text"
-                        placeholder="Assign user"
-                        value={assigned}
-                        onChange={(event) => setAssigned(event.target.value)}
+                        type="text" placeholder="Assign user" value={assigned} onChange={(event)
+                        => setAssigned(event.target.value)}
                     />
                     <button onClick={handleAssignUser}>Assign >></button>
                 </div>
