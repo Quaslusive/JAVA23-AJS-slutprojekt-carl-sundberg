@@ -23,13 +23,13 @@ function TaskCard  ({ id, task, updateTask, deleteTask })  {
             <p>Category: {task.category}</p>
             {task.assigned && <p>Assigned to: {task.assigned}</p> }
             {task.status === 'to-do' && (
-                <div>
+                <form onSubmit={handleAssignUser}>
                     <input
                         type="text" placeholder="Assign user" value={assigned} onChange={(event) => setAssigned(event.target.value)}
                         onKeyPress={handlerKeyPress}
                     />
                     <button onClick={handleAssignUser}>Assign >></button>
-                </div>
+                </form>
             )}
             {task.status === 'in-progress' && (
                 <button onClick={() => updateTask(id, { status: 'done' })} onKeyPress={handlerKeyPress}>Done >></button>
