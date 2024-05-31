@@ -7,9 +7,9 @@ function AddTaskForm  () {
     const [newCategory, setNewCategory] = useState('UX');
 
     function handleAddTask (event) {
+        event.preventDefault();
         if (newTask.trim() === '') {
             alert('Beskrivningen kan inte vara tom');
-        event.preventDefault();
             return;
         }
         const newTaskKey = push(ref(db, 'assignments')).key;
@@ -19,9 +19,13 @@ function AddTaskForm  () {
             category: newCategory,
             status: 'to-do',
         };
-        update(ref(db), updates);
-        setNewTask('');
-        console.log(ref(db) );
+        update(ref(db), updates)
+            .then(() => {
+                setNewTask('');
+            })
+            .catch(error => {
+                console.error("Error adding task: ", error);
+            });
     }
 
 /*
@@ -40,7 +44,7 @@ function AddTaskForm  () {
                 type="text"
                 placeholder="Enter Assignment"
                 value={newTask}
-                onChange={(event) => setNewTask(event.target.value)}
+                onChange={event => setNewTask(event.target.value)}
              //   onKeyPress={handlerKeyPress}
             />
             <select
@@ -52,7 +56,7 @@ function AddTaskForm  () {
                 <option className='Backend' value="Dev Backend">Dev Backend</option>
                 <option className='Frontend' value="Dev Frontend">Dev Frontend</option>
             </select>
-            <button>Add Assignment</button>
+            <button type='submit'>Add Assignment</button>
         </form>
     );
 }
