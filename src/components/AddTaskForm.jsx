@@ -32,25 +32,25 @@ function AddTaskForm  () {
     }
 
     return (
-        <div className="add-task-form">
+        <form className="add-task-form" onSubmit={handleAddTask}>
             <input
                 type="text"
                 placeholder="Enter Assignment"
                 value={newTask}
                 onChange={(event) => setNewTask(event.target.value)}
-                onKeyPress={handlerKeyPress}
+             //   onKeyPress={handlerKeyPress}
             />
             <select
                 value={newCategory}
                 onChange={(event) => setNewCategory(event.target.value)}
-                onKeyPress={handlerKeyPress}
+               // onKeyPress={handlerKeyPress}
             >
                 <option className='ux' value="UX">UX</option>
                 <option className='Backend' value="Dev Backend">Dev Backend</option>
                 <option className='Frontend' value="Dev Frontend">Dev Frontend</option>
             </select>
-            <button onClick={handleAddTask} onKeyPress={handlerKeyPress}>Add Assignment</button>
-        </div>
+            <button>Add Assignment</button>
+        </form>
     );
 }
 

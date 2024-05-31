@@ -4,7 +4,7 @@ import { onValue, update, remove } from "firebase/database";
 import AddTaskForm from './AddTaskForm';
 import Column from './Column';
 
-function ScrumBoard (message) {
+function ScrumBoard () {
     const [tasks, setTasks] = useState({});
 
     useEffect(() => {
@@ -12,9 +12,8 @@ function ScrumBoard (message) {
         const listener = onValue(tasksRef, (snapshot) => {
             const data = snapshot.val();
             setTasks(data || {});
+
         });
-
-
         return () => listener();
     }, []);
 
@@ -25,7 +24,7 @@ function ScrumBoard (message) {
         update(ref(db, `assignments/${taskId}`), updates);
             } catch (error){
             alert('Gick inte att uppdatera');
-            console.error('Error!  Gick inte att uppdatera', error)
+            console.error('Error! Gick inte att uppdatera', error)
         }
     }
 
@@ -34,7 +33,7 @@ function ScrumBoard (message) {
         remove(ref(db, `assignments/${taskId}`));
             } catch (error) {
             alert('Gick inte att ta bort');
-            console.error('Error!  Gick inte att ta bort ', error)        }
+            console.error('Error! Gick inte att ta bort ', error)        }
     }
 
     return (
