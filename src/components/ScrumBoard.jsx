@@ -21,11 +21,19 @@ function ScrumBoard () {
 
 
     function updateTask  (taskId, updates)  {
+
+        try{
         update(ref(db, `assignments/${taskId}`), updates);
+            } catch (error){
+            console.error('Error!  Gick inte att uppdatera', error)
+        }
     }
 
     function deleteTask (taskId)  {
+        try {
         remove(ref(db, `assignments/${taskId}`));
+            } catch (error) {
+            console.error('Error!  Gick inte att ta bort ', error)        }
     }
 
     return (
