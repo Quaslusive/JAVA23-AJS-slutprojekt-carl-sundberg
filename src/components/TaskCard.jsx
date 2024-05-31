@@ -9,13 +9,15 @@ function TaskCard  ({ id, task, updateTask, deleteTask })  {
             setAssigned('');
         }
     }
-
+/*
     function handlerKeyPress(event) {
         if (event.key === 'Enter'){
             event.preventDefault();
             handleAssignUser();
         }
     }
+
+ */
 
     return (
         <div className="task">
@@ -26,16 +28,17 @@ function TaskCard  ({ id, task, updateTask, deleteTask })  {
                 <form onSubmit={handleAssignUser}>
                     <input
                         type="text" placeholder="Assign user" value={assigned} onChange={(event) => setAssigned(event.target.value)}
-                        onKeyPress={handlerKeyPress}
+
                     />
                     <button onClick={handleAssignUser}>Assign >></button>
                 </form>
             )}
             {task.status === 'in-progress' && (
-                <button onClick={() => updateTask(id, { status: 'done' })} onKeyPress={handlerKeyPress}>Done >></button>
+                <button onClick={() => updateTask(id, { status: 'done' })}
+                     >Done >></button>
             )}
             {task.status === 'done' && (
-                <button onClick={() => deleteTask(id)} onKeyPress={handlerKeyPress}>Remove X</button>
+                <button onClick={() => deleteTask(id)}>Remove X</button>
             )}
         </div>
     );
