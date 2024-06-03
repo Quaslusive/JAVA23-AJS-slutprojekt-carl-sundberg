@@ -1,2 +1,3 @@
 React App
-![bild](https://github.com/Quaslusive/JAVA23-AJS-slutprojekt-carl-sundberg/assets/34892891/c9f29321-33db-4de6-8262-5b23c111cf42)
+![image](https://github.com/Quaslusive/JAVA23-AJS-slutprojekt-carl-sundberg/assets/34892891/fdb5c41b-7d24-42f5-9f7f-25e34d468159)
+Preview of Scrum Board tasklist
